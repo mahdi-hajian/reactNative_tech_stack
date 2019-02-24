@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 import ListItem from './ListItem';
 
 class LibraryList extends Component {
-    renderItem(library) {
-        return <ListItem library={library} />;
+    renderItem(library) { 
+        return <ListItem library={library.item} />;
     }
     render() {
         return (
             <FlatList 
-                data={this.props.Librares}
+                data={this.props.librares}
                 renderItem={this.renderItem}
-                keyExtractor={(library => library.id)}
+                keyExtractor={(library => library.id.toString())}
             />
         );
     }
 }
 
-const mapStateToProps = state => ({ Librares: state.Librares });
+const mapStateToProps = state => ({ librares: state.libraresIndex });
 
 export default connect(mapStateToProps)(LibraryList);
